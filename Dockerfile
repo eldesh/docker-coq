@@ -4,9 +4,9 @@
 
 FROM ocaml/opam:debian
 
-# coq 8.5.3 req 3.11.2 <= ocaml < 4.06.0
+# coq 8.6 req 4.01.0 <= ocaml < 4.06.0
 ARG OCAML_VER=4.05.0
-ARG COQ_VER=8.5.3
+ARG COQ_VER=8.6
 
 # package description
 LABEL name="coq" \

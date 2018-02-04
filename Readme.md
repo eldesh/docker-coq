@@ -15,7 +15,9 @@ This image provides Coq built on Debian image.
 
 ## Tags
 
-- latest(8.5pl3)
+- latest(8.6pl1)
+- 8.6pl1
+- 8.6
 - 8.5pl3
 - 8.5pl2
 - 8.5pl1
