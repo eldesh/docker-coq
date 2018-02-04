@@ -10,7 +10,7 @@ This image provides Coq built on Debian image.
 ## Environment
 
 - working directory /coq
-- coq is executed by default
+- coqc is executed by default
 
 
 ## Tags
