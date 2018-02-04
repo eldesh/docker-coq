@@ -20,7 +20,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /coq
 
-RUN opam switch 4.02.3 \
+RUN opam switch ${OCAML_VER} \
  && eval `opam config env` \
  && opam install coq.${COQ_VER} --yes
 
