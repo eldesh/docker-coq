@@ -1,3 +1,4 @@
+![coq logo][logo]
 
 # Coq: A Formal Proof Management System
 
@@ -33,4 +34,6 @@ This image provides Coq built on Debian image.
 ## Links
 
 - [Coq](https://coq.inria.fr/ "Coq")
+
+[logo]: https://coq.inria.fr/files/barron_logo.png "Coq Formal Proof Management System"
 
