@@ -24,6 +24,10 @@ This image provides Coq built on Debian image.
 - 8.5pl2
 - 8.5pl1
 - 8.4pl6
+- 8.4pl5
+- 8.4pl4
+- 8.4pl2
+- 8.4pl1
 
 
 ## Links
