@@ -20,12 +20,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /coq
 
-RUN apt-get update -y \
-    opam switch 4.02.3 \
-    eval `opam config env` \
-    opam install coq.${COQ_VER} --yes
-
-ENV PATH $PATH
+RUN opam switch 4.02.3 \
+ && eval `opam config env` \
+ && opam install coq.${COQ_VER} --yes
 
 CMD coqc
 
