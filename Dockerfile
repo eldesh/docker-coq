@@ -7,6 +7,7 @@ FROM ocaml/opam:debian
 # coq 8.7.0 req 4.02.3 <= ocaml
 ARG OCAML_VER=4.05.0
 ARG COQ_VER=8.7.0
+ARG OPAMJOBS=2
 
 # package description
 LABEL name="coq" \
@@ -20,7 +21,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /coq
 
-RUN opam switch ${OCAML_VER} \
+RUN opam switch ${OCAML_VER} -v \
  && eval `opam config env` \
  && opam install coq.${COQ_VER} --yes
 
