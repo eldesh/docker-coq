@@ -1,22 +1,44 @@
+![coq logo][logo]
 
-# Coq: A Formal Proof Management System
-
+# Docker/Coq
 
 ## Summary
 
 This image provides Coq built on Debian image.
+Coq is a formal proof management system besed on CIC mathematical system.
 
 
 ## Environment
 
-- working directory /coq
-- coqc is executed by default
+- working directory /home/coq
+
+
+## How to use
+
+### coqtop
+
+```sh
+$ docker run -it coq:latest coqtop
+```
+
+
+### coqc
+
+For example:
+compile your .v file with coqc on the current directory.
+
+```sh
+$ ls src
+foo.v
+$ docker run -it -v `pwd`:/home/coq/src coq:latest coqc src/foo.v
+```
 
 
 ## Tags
 
-- latest(8.7.1)
-- 8.7.1
+Provided tags bound to docker images.
+
+- latest(8.7.0)
 - 8.7.0
 - 8.6pl1
 - 8.6
@@ -33,4 +55,6 @@ This image provides Coq built on Debian image.
 ## Links
 
 - [Coq](https://coq.inria.fr/ "Coq")
+
+[logo]: https://coq.inria.fr/files/barron_logo.png "Coq Formal Proof Management System"
 
