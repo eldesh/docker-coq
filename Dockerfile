@@ -22,10 +22,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
 # delete user [opam]; setup user [coq]
-RUN useradd -m coq \
+RUN useradd --create-home coq --shell /usr/bin/bash --groups sudo \
  && echo "coq:coq" | chpasswd \
- && adduser coq sudo \
- && chsh coq -s `which bash` \
  && echo 'coq ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/coq \
  && userdel --remove opam \
  && rm /etc/sudoers.d/opam
