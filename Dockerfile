@@ -45,5 +45,5 @@ RUN opam init ${OPAMVERBOSE} --yes \
  && eval `opam config env` \
  && opam install ${OPAMVERBOSE} --yes coq.${COQ_VER}
 
-CMD coqc
+CMD coqc --version
 
