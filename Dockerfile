@@ -21,6 +21,7 @@ LABEL name="coq" \
 ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
+WORKDIR /
 # delete user [opam]; setup user [coq]
 RUN useradd --create-home coq --shell /usr/bin/bash --groups sudo \
  && echo "coq:coq" | chpasswd \
