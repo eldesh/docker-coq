@@ -23,11 +23,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 USER root
 WORKDIR /
 # delete user [opam]; setup user [coq]
-RUN useradd --create-home coq --shell /usr/bin/bash --groups sudo \
+RUN userdel --remove opam \
+ && rm /etc/sudoers.d/opam \
+ && groupadd --gid 1000 coq \
+ && useradd --create-home --shell /usr/bin/bash \
+      --groups sudo --uid 1000 --gid 1000 coq \
  && echo "coq:coq" | chpasswd \
  && echo 'coq ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/coq \
- && userdel --remove opam \
- && rm /etc/sudoers.d/opam
 
 # switch user from [opam] to [coq]
 USER coq
