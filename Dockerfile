@@ -12,7 +12,7 @@ ARG OPAMVERBOSE=-v
 
 # package description
 LABEL name="coq" \
-      version="1" \
+      version="2" \
       description="A Docker image for using Coq interactive theorem prover ${COQ_VER}" \
       coq_version="${COQ_VER}" \
       ocaml_version="${OCAML_VER}" \
