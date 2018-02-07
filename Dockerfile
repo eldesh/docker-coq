@@ -29,7 +29,7 @@ RUN userdel --remove opam \
  && useradd --create-home --shell /usr/bin/bash \
       --groups sudo --uid 1000 --gid 1000 coq \
  && echo "coq:coq" | chpasswd \
- && echo 'coq ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/coq \
+ && echo 'coq ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/coq
 
 # switch user from [opam] to [coq]
 USER coq
