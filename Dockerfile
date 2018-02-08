@@ -42,6 +42,7 @@ COPY dot.ocamlinit /home/coq/.ocamlinit
 # setup opam ; install coq
 RUN opam init ${OPAMVERBOSE} --yes \
  && eval `opam config env` \
+ && sudo chown coq:coq ~/.ocamlinit \
  && echo '# OPAM configuration' >> ~/.profile \
  && echo '. ~/.opam/opam-init/init.sh >/dev/null 2>&1 || true' >> ~/.profile \
  && opam switch ${OCAML_VER} ${OPAMVERBOSE} \
