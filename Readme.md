@@ -50,6 +50,7 @@ Provided tags bound to docker images.
 - 8.4pl4
 - 8.4pl2
 - 8.4pl1
+- 8.3
 
 
 ## Links
