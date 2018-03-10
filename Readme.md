@@ -2,6 +2,8 @@
 
 # Docker/Coq
 
+![dockeri.co][dockericon]
+
 ## Summary
 
 This image provides Coq built on Debian image.
@@ -58,4 +60,5 @@ Provided tags bound to docker images.
 - [Coq](https://coq.inria.fr/ "Coq")
 
 [logo]: https://coq.inria.fr/files/barron_logo.png "Coq Formal Proof Management System"
+[dockericon]: https://dockeri.co/image/eldesh/coq "dockeri.co"
 
