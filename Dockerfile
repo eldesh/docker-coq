@@ -4,9 +4,9 @@
 
 FROM ocaml/opam:debian
 
-# coq 8.7.0 req 4.02.3 <= ocaml
+# coq 8.8.2 req 4.02.3 <= ocaml
 ARG OCAML_VER=4.05.0
-ARG COQ_VER=8.7.0
+ARG COQ_VER=8.8.2
 ARG OPAMJOBS=2
 ARG OPAMVERBOSE=-v
 
@@ -47,6 +47,7 @@ RUN opam init ${OPAMVERBOSE} --yes \
  && echo '. ~/.opam/opam-init/init.sh >/dev/null 2>&1 || true' >> ~/.profile \
  && opam switch ${OCAML_VER} ${OPAMVERBOSE} \
  && eval `opam config env` \
+ && opam repo add official https://opam.ocaml.org/ \
  && opam install ${OPAMVERBOSE} --yes coq.${COQ_VER}
 
 CMD coqc --version
