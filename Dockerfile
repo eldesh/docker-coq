@@ -48,6 +48,7 @@ RUN opam init ${OPAMVERBOSE} --yes \
  && opam switch ${OCAML_VER} ${OPAMVERBOSE} \
  && eval `opam config env` \
  && opam repo add official https://opam.ocaml.org/ \
+ && opam repo add coq-release http://coq.inria.fr/opam/released \
  && opam install ${OPAMVERBOSE} --yes coq.${COQ_VER}
 
 CMD coqc --version
