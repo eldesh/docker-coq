@@ -2,13 +2,13 @@
 # A Docker image for using Coq interactive theorem prover
 #
 
-FROM ocaml/opam:debian
+FROM ocaml/opam2:debian-stable
 
 # coq 8.4pl1 req 4.02.3 <= ocaml
 ARG OCAML_VER=4.01.0
 ARG COQ_VER=8.4pl1
 ARG OPAMJOBS=2
-ARG OPAMVERBOSE=-v
+ARG OPAMVERBOSE=1
 
 # package description
 LABEL name="coq" \
@@ -40,15 +40,33 @@ ENV HOME=/home/coq
 COPY dot.ocamlinit /home/coq/.ocamlinit
 
 # setup opam ; install coq
-RUN opam init ${OPAMVERBOSE} --yes \
- && eval `opam config env` \
+RUN sudo apt-get install -y m4 \
+ # generate nosandbox command
+ && echo 'wrap-build-commands: []'    > ~/.opamrc-nosandbox \
+ && echo 'wrap-install-commands: []' >> ~/.opamrc-nosandbox \
+ && echo 'wrap-remove-commands: []'  >> ~/.opamrc-nosandbox \
+ && echo 'required-tools: []'        >> ~/.opamrc-nosandbox \
+ # generate sandbox command
+ && echo 'wrap-build-commands  : ["%{hooks}%/sandbox.sh" "build"]'    > ~/.opamrc-sandbox \
+ && echo 'wrap-install-commands: ["%{hooks}%/sandbox.sh" "install"]' >> ~/.opamrc-sandbox \
+ && echo 'wrap-remove-commands : ["%{hooks}%/sandbox.sh" "remove"]'  >> ~/.opamrc-sandbox \
+ # disable sandbox
+ && opam-sandbox-disable \
+ # setup opam
+ && opam init --yes \
+ && eval `opam env` \
+ # generate opam configuration
  && sudo chown coq:coq ~/.ocamlinit \
  && echo '# OPAM configuration' >> ~/.profile \
  && echo '. ~/.opam/opam-init/init.sh >/dev/null 2>&1 || true' >> ~/.profile \
- && opam switch ${OCAML_VER} ${OPAMVERBOSE} \
- && eval `opam config env` \
+ # switch to specific ocaml
+ && opam switch create ${OCAML_VER} \
+ && eval `opam env` \
+ # setup coq repository
  && opam repo add official https://opam.ocaml.org/ \
- && opam install ${OPAMVERBOSE} --yes coq.${COQ_VER}
+ && opam repo add coq-release http://coq.inria.fr/opam/released \
+ # install coq
+ && opam pin add coq ${COQ_VER}
 
 CMD coqc --version
 
