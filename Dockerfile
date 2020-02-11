@@ -4,9 +4,9 @@
 
 FROM ocaml/opam2:debian-stable
 
-# coq 8.10.2 req 4.05.0 <= ocaml
+# coq 8.11.0 req 4.05.0 <= ocaml < 4.10.
 ARG OCAML_VER=4.05.0
-ARG COQ_VER=8.10.2
+ARG COQ_VER=8.11.0
 ARG OPAMVERBOSE=1
 
 # package description

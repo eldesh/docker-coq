@@ -40,7 +40,7 @@ $ docker run -it -v `pwd`:/home/coq/src coq:latest coqc src/foo.v
 
 Provided tags bound to docker images.
 
-- latest(8.10.2)
+- latest(8.11.0)
 - 8.10.2
 - 8.10.1
 - 8.10.0
