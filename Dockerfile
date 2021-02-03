@@ -4,9 +4,9 @@
 
 FROM ocaml/opam2:debian-stable
 
-# coq 8.12.2 req 4.05.0 <= ocaml < 4.12.
+# coq 8.13.0 req 4.05.0 <= ocaml
 ARG OCAML_VER=4.05.0
-ARG COQ_VER=8.12.2
+ARG COQ_VER=8.13.0
 ARG OPAMVERBOSE=1
 
 # package description
@@ -39,7 +39,11 @@ ENV HOME=/home/coq
 COPY dot.ocamlinit /home/coq/.ocamlinit
 
 # setup opam ; install coq
-RUN sudo apt-get install -y m4 \
+RUN if [ "$COQ_VER" = "8.13.0" ]; then \
+      sudo apt-get install -y m4 libgmp-dev ; \
+    else \
+      sudo apt-get install -y m4 ; \
+    fi \
  # generate nosandbox command
  && echo 'wrap-build-commands: []'    > ~/.opamrc-nosandbox \
  && echo 'wrap-install-commands: []' >> ~/.opamrc-nosandbox \
