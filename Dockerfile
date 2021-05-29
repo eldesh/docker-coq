@@ -4,9 +4,9 @@
 
 FROM ocaml/opam2:debian-stable
 
-# coq 8.13.0 req 4.05.0 <= ocaml
+# coq 8.13.1 req 4.05.0 <= ocaml
 ARG OCAML_VER=4.05.0
-ARG COQ_VER=8.13.0
+ARG COQ_VER=8.13.1
 ARG OPAMVERBOSE=1
 
 # package description
@@ -39,7 +39,7 @@ ENV HOME=/home/coq
 COPY dot.ocamlinit /home/coq/.ocamlinit
 
 # setup opam ; install coq
-RUN if [ "$COQ_VER" = "8.13.0" ]; then \
+RUN if [ "$COQ_VER" = "8.13.0" -o "$COQ_VER" = "8.13.1" ]; then \
       sudo apt-get install -y m4 libgmp-dev ; \
     else \
       sudo apt-get install -y m4 ; \
